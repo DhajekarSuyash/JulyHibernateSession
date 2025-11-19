@@ -36,6 +36,13 @@ public class Student {
 	public void setZipcode(int zipcode) {
 		this.zipcode = zipcode;
 	}
+
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", name=" + name + ", zipcode=" + zipcode + "]";
+	}
+	
+	
 	
 	
 
