@@ -1,10 +1,13 @@
 package com.hibernate.MyFirstHibernateApp.entity;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class Student {
+public class Student 
+{
 	
 	@Id
 	private int id;
@@ -12,7 +15,7 @@ public class Student {
 	private String name;
 	
 	private int zipcode;
-
+	
 	public int getId() {
 		return id;
 	}

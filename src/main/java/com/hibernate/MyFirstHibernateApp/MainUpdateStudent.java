@@ -1,8 +1,5 @@
 package com.hibernate.MyFirstHibernateApp;
 
-import java.io.Serializable;
-import java.util.List;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -10,8 +7,7 @@ import org.hibernate.Transaction;
 import com.hibernate.MyFirstHibernateApp.entity.Student;
 import com.hibernate.MyFirstHibernateApp.utility.HIbernateUtility;
 
-public class MainGetAllStudents implements Serializable
-{
+public class MainUpdateStudent {
 
 	public static void main(String[] args) {
 
@@ -20,19 +16,16 @@ public class MainGetAllStudents implements Serializable
 		Session session = factory.openSession();
 
 		Transaction transaction = session.beginTransaction();
-		// we don't have any predefined method to get all student
-		// -> So we need to write a query for it
-		// SQL query
-
-		List<Student> studentList = session.createNativeQuery("select * from student",
-				Student.class)
-				.getResultList();
 		
-		studentList.stream().forEach(x -> System.out.println(x.toString()));
+		Student s = session.find(Student.class, 105);
+		System.out.println("Student from db : " +s.toString());
+		s.setName("David");
+		s.setZipcode(55555);
+		System.out.println("Student from db after update  : " + s.toString());
 		
 		transaction.commit();
 		session.close();
-
+		
 	}
 
 }
